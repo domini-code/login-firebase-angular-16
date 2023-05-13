@@ -84,9 +84,8 @@ export class AuthService {
   }
 
 
-
   private checkUserIsVerified(user: User): void {
-    const route = user.emailVerified ? '/home' : '/user/email-verification';
+    const route = user.emailVerified ? '/user/profile' : '/user/email-verification';
     this.router.navigate([route]);
   }
 }

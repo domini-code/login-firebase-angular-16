@@ -6,7 +6,7 @@ import { User } from 'firebase/auth';
 @Component({
   selector: 'app-email-verification',
   templateUrl: './email-verification.component.html',
-  styleUrls: ['./email-verification.component.scss']
+  styleUrls: ['./email-verification.component.scss'],
 })
 export class EmailVerificationComponent {
   user: User | null = null;
@@ -16,8 +16,9 @@ export class EmailVerificationComponent {
   constructor() {
     this.authSvc.userState$
       .pipe(
-        filter((authState)=> authState !== null),
-        tap((user)=> this.user = user)
+        filter((authState) => authState !== null),
+        tap((user) => (this.user = user)),
+        tap(() => this.authSvc.signOut())
       )
       .subscribe();
   }

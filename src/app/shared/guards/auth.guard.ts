@@ -8,6 +8,6 @@ export const authGuard = () => {
   const router = inject(Router);
   return authService.userState$.pipe(
     take(1),
-    tap((isLoggedIn) => (!!isLoggedIn ? router.navigate(['/home']) : true))
+    tap((isLoggedIn) => (!!isLoggedIn ? router.navigate(['/user/sign-in']) : true))
   );
 };
